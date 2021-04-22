@@ -1,2 +1,6 @@
 Gitの練習
 Thursday 
+_ git add 
+_git commit
+4/22
+_git rm

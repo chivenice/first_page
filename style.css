@@ -10,10 +10,17 @@ h2{
     padding: 30px;
     background-color: rgba(153,136,17)
 }
-p {
+p1 {
     border-radius: 20px;
     width: 70%;
     height: 200px;
     margin: 50px auto;
 background: linear-gradient(50deg, #CCFFFF, #FFCCCC);
 }
+p2 {
+    position: center;
+    margin: 50px auto;
+    background-color: pink;
+    height: 200px;
+    width: 70%;
+  }

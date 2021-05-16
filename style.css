@@ -11,14 +11,9 @@ h2{
     background-color: rgba(153,136,17)
 }
 p {
-    background-color: lightgoldenrodyellow;
-}
-
-body {
     border-radius: 20px;
     width: 70%;
-    height: 400px;
+    height: 200px;
     margin: 50px auto;
-background: linear-gradient(35deg, #CCFFFF, #FFCCCC);
-
- }
+background: linear-gradient(50deg, #CCFFFF, #FFCCCC);
+}

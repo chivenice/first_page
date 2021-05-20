@@ -24,3 +24,17 @@ p2 {
     height: 200px;
     width: 70%;
   }
+
+  p5 {
+    animation-name: rainbow;
+    animation-duration: 10s;
+  }
+  
+  @keyframes rainbow {
+    0% {
+      background-color: black;
+    }
+    100% {
+      background-color: pink;
+    }
+  }

@@ -1,0 +1,18 @@
+body {
+    background-color:#e7ae9d ;
+    margin:0;
+  }
+  .block {
+    background-color: #c21e51;
+    width:100px;
+    height:100vh;
+  }
+  
+  .block2 {
+    background-color: #c21e51;
+    width:200px;
+    height:100vh;
+    position: absolute;
+    right:0;
+    top:0;
+  }

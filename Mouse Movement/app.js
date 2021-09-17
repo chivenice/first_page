@@ -37,7 +37,7 @@ output.x.range = output.x.end - output.x.start;
 
 //apply output to html
 pupilsArray.forEach(function(pupil,k){
-  pupil.style.transform='translateX(50px)';
+  pupil.style.transform='translateX('+output.x.range+'px)';
 });
 
 

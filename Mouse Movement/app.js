@@ -12,7 +12,7 @@ var input = {
   },
   mouseY: {
     start: 0,
-    end: window.innerHeigth,
+    end: window.innerHeight,
     current: 0
   },
 };

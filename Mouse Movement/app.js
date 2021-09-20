@@ -20,6 +20,17 @@ var input = {
 input.mouseX.range = input.mouseX.end - input.mouseX.start;
 input.mouseY.range = input.mouseY.end - input.mouseY.start;
 
+
+var handleMouseMove = function (event) {
+  // mouse x input
+  input.mouseX.current = event.clientX;
+  input.mouseX.fraction = (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
+
+  // mouse y input
+  input.mouseY.current = event.clientY;
+  input.mouseY.fraction = (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
+
+
 //output setup
 var output = {
   x: {
@@ -39,16 +50,6 @@ output.x.current = output.x.start + (input.mouseX.fraction * output.x.range);
 pupilsArray.forEach(function (pupil, k) {
   pupil.style.transform = 'translateX('+output.x.current+'px)';
 });
-
-
-var handleMouseMove = function (event) {
-  // mouse x input
-  input.mouseX.current = event.clientX;
-  input.mouseX.fraction = (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
-
-  // mouse y input
-  input.mouseY.current = event.clientY;
-  input.mouseY.fraction = (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
 
 
   //console.log('output.x.current',output.x.current);

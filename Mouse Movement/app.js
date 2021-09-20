@@ -1,64 +1,63 @@
 // html setup
-const pupilsHTMLCollection = document.getElementsByClassName('pupil');
-const pupilsArray = Array.from(pupilsHTMLCollection);
+var pupilsHTMLCollection = document.getElementsByClassName('pupil');
+var pupilsArray = Array.from(pupilsHTMLCollection);
 
-console.log('pupilsHTMLCollection',pupilsHTMLCollection)
 
 //input setup
-const input ={
+var input = {
   mouseX: {
     start: 0,
-    end: window.innerWidth ,
-    current:0,
+    end: window.innerWidth,
+    current: 0,
   },
-  mouseY:{   
+  mouseY: {
     start: 0,
-    end: window.innerHeigth ,
-    current:0
+    end: window.innerHeigth,
+    current: 0
   },
 };
 
-input.mouseX.range =input.mouseX.end - input.mouseX.start;
-input.mouseY.range =input.mouseY.end - input.mouseY.start;
+input.mouseX.range = input.mouseX.end - input.mouseX.start;
+input.mouseY.range = input.mouseY.end - input.mouseY.start;
 
 //output setup
-const output ={
-  x:{
-    start:-100,
-    end:100,
-    current:0,
+var output = {
+  x: {
+    start: -100,
+    end: 100,
+    current: 0,
   },
-  y:{
-    
-  },
-}
-//output x
+  y: {},
+};
 output.x.range = output.x.end - output.x.start;
 
+//output x
+
+output.x.current = output.x.start + (input.mouseX.fraction * output.x.range);
+
 //apply output to html
-pupilsArray.forEach(function(pupil,k){
-  pupil.style.transform='translateX('+output.x.range+'px)';
+pupilsArray.forEach(function (pupil, k) {
+  pupil.style.transform = 'translateX('+output.x.current+'px)';
 });
 
 
-const handleMouseMove = function(event){
- // mouse x input
-  input.mouseX.current = event.pageX;
+var handleMouseMove = function (event) {
+  // mouse x input
+  input.mouseX.current = event.clientX;
   input.mouseX.fraction = (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
-  
- // mouse y input
-   input.mouseY.current = event.pageY;
+
+  // mouse y input
+  input.mouseY.current = event.clientY;
   input.mouseY.fraction = (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
-  
-  output.x.current = output.x.start +(input.mouseX.fraction * output.x.range);
-  
+
+
   //console.log('output.x.current',output.x.current);
   //console.log('fraction Y',input.mouseY.fraction);
 
 }
 
-const handleResize = function(){
-  input.mouseX.end = window.innerWidth ;
+var handleResize = function () {
+  input.mouseX.end = window.innerWidth;
   input.mouseX.range = input.mouseX.end - input.mouseX.start;
 }
 

@@ -23,11 +23,11 @@ input.mouseY.range = input.mouseY.end - input.mouseY.start;
 
 var handleMouseMove = function (event) {
   // mouse x input
-  input.mouseX.current = event.clientX;
+  input.mouseX.current = event.pageX;
   input.mouseX.fraction = (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
 
   // mouse y input
-  input.mouseY.current = event.clientY;
+  input.mouseY.current = event.pageY;
   input.mouseY.fraction = (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
 
 
@@ -38,17 +38,24 @@ var output = {
     end: 100,
     current: 0,
   },
-  y: {},
+  y: {
+    start: -100,
+    end: 100,
+    current: 0,
+  },
 };
 output.x.range = output.x.end - output.x.start;
+output.y.range = output.y.end - output.y.start;
 
 //output x
-
 output.x.current = output.x.start + (input.mouseX.fraction * output.x.range);
+
+//output　y
+output.y.current = output.y.start + (input.mouseY.fraction * output.y.range);
 
 //apply output to html
 pupilsArray.forEach(function (pupil, k) {
-  pupil.style.transform = 'translateX('+output.x.current+'px)';
+  pupil.style.transform = 'translate(' + output.x.current + 'px, '+ output.y.current + 'px)';
 });
 
 

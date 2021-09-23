@@ -1,12 +1,11 @@
 
   body {
-    background-color:#a663cc ;
+    background-color:#dbf4ad ;
     margin:0;
   }
   
   
   .eye {
-    background-color: white;
     width:200px;
     height:200px;
     border-radius:50%;
@@ -29,7 +28,11 @@
   }
   .eye1{
     margin-left:-250px;
+    background-color: #fef8dd;
   }
   .eye2{
     margin-left:25px;
+    background-color: #64b6ac;
+
+    
   }

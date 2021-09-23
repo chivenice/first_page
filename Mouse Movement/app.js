@@ -1,6 +1,7 @@
 // html setup
-var pupilsHTMLCollection = document.getElementsByClassName('pupil');
-var pupilsArray = Array.from(pupilsHTMLCollection);
+var itemsHTMLCollection = document.getElementsByClassName('parallax-item');
+var itemsArray = Array.from(itemsHTMLCollection);
+
 
 
 //input setup
@@ -34,13 +35,13 @@ var handleMouseMove = function (event) {
   //output setup
   var output = {
     x: {
-      start: -75,
-      end: 75,
+      start: -150,
+      end: 150,
       current: 0,
     },
     y: {
-      start: -75,
-      end: 75,
+      start: -150,
+      end: 150,
       current: 0,
     },
   };
@@ -49,24 +50,19 @@ var handleMouseMove = function (event) {
 
   //output x
   output.x.current = output.x.end - (input.mouseX.fraction * output.x.range);
-  output.x.opposite = output.x.start + (input.mouseX.fraction * output.x.range);
 
   //output　y
-  output.y.current = output.y.start + (input.mouseY.fraction * output.y.range);
-  output.y.opposite = output.y.end - (input.mouseY.fraction * output.y.range);
+  output.y.current = output.y.end - (input.mouseY.fraction * output.y.range);
 
   //apply output to html
-  pupilsArray.forEach(function (pupil, k) {
-    
-      if (k === 0) {
-        pupil.style.transform = 'translate(' + output.x.current + 'px, ' + output.y.current + 'px)';
-  
-      }
-      else {
-        pupil.style.transform = 'translate(' + output.x.opposite + 'px, ' + output.y.opposite + 'px)';
-    }
+  itemsArray.forEach(function (item, k) {
+    var depth =item.dataset.depth
+    console.log(k,'depth',depth)
+   
+     item.style.transform = 'translate(' + output.x.current + 'px, ' + output.y.current + 'px)';
+ 
 
-  });
+ });
 
 
   //console.log('output.x.current',output.x.current);

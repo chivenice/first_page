@@ -56,14 +56,18 @@ var handleMouseMove = function (event) {
 
   //apply output to html
   itemsArray.forEach(function (item, k) {
-    var depth =item.dataset.depth
-    console.log(k,'depth',depth)
-   
-     item.style.transform = 'translate(' + output.x.current + 'px, ' + output.y.current + 'px)';
+    var depth = parseFloat(item.dataset.depth,10);    
+    var itemOutput = {
+     x: output.x.current - (output.x.current * depth),
+     y: output.y.current -(output.y.current * depth),
+     zIndex:10000 - (10000*depth)
+   };
+        console.log(k,'depth',depth)
+     item.style.zIndex= itemOutput.zIndex;
+     item.style.transform = 'translate(' + itemOutput.x + 'px, ' + itemOutput.y + 'px)';
  
 
  });
-
 
   //console.log('output.x.current',output.x.current);
   //console.log('fraction Y',input.mouseY.fraction);

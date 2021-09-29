@@ -56,7 +56,7 @@ var handleMouseMove = function (event) {
 
   //apply output to html
   itemsArray.forEach(function (item, k) {
-    var depth = parseFloat(item.dataset.depth,10);    
+    var depth = parseFloat(item.dataset.depth,10);    //10 convert a number or a piece of string to something that count by 15s; 
     var itemOutput = {
      x: output.x.current - (output.x.current * depth),
      y: output.y.current -(output.y.current * depth),

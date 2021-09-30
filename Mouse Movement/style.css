@@ -5,11 +5,20 @@ body {
 
 
 .parallax-item {
-  width:100px;
-  height:100px;
+  width:200px;
+  height:200px;
   position: absolute;
   left:50%;
   top:50%;
-  margin-left:-100px;
-  margin-top:-100px;
+  margin-left:-150px;
+  margin-top:-150px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.parallax-item-img {
+  max-width: 100%;
+  max-height:100px;
+  
 }

@@ -35,8 +35,17 @@ var output = {
   },
   zIndex:{
     range:10000
+  },
+  scale:{
+    start:1,
+    end:0.3,
+  },
+  blur:{
+    startingDepth:.5,
+    range:20
   }
 };
+output.scale.range = output.scale.end - output.scale.start;
 output.x.range = output.x.end - output.x.start;
 output.y.range = output.y.end - output.y.start;
 
@@ -67,11 +76,14 @@ var updateEachParallaxItem = function(){
       var itemOutput = {
         x: output.x.current - (output.x.current * depth),
         y: output.y.current - (output.y.current * depth),
-        zIndex: output.zIndex.range - ( output.zIndex.range*depth)
+        zIndex: output.zIndex.range - ( output.zIndex.range * depth),
+        scale: output.scale.start + (output.scale.range * depth),
+        blur: (depth - output.blur.startingDepth)* output.blur.range
       };
       console.log(k, 'depth', depth)
       item.style.zIndex = itemOutput.zIndex;
-      item.style.transform = 'translate(' + itemOutput.x + 'px, ' + itemOutput.y + 'px)';
+      item.style.transform = 'scale('+ itemOutput.scale+') translate(' + itemOutput.x + 'px, ' + itemOutput.y + 'px)';
+      item.style.filter = 'blur('+ itemOutput.blur+'px)';
   
   
     });
@@ -85,13 +97,7 @@ var handleMouseMove = function (event) {
   updateInputs();
   updateOutputs();
   updateEachParallaxItem();
-
-
 }
-
-//console.log('output.x.current',output.x.current);
-//console.log('fraction Y',input.mouseY.fraction);
-
 
 
 var handleResize = function () {

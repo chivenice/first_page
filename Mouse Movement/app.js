@@ -60,27 +60,33 @@ var updateOutputs = function() {
   output.y.current = output.y.end - (input.mouseY.fraction * output.y.range);
 }
 
+var updateEachParallaxItem = function(){
+    //apply output to html
+    itemsArray.forEach(function (item, k) {
+      var depth = parseFloat(item.dataset.depth, 10);    //10 convert a number or a piece of string to something that count by 15s; 
+      var itemOutput = {
+        x: output.x.current - (output.x.current * depth),
+        y: output.y.current - (output.y.current * depth),
+        zIndex: output.zIndex.range - ( output.zIndex.range*depth)
+      };
+      console.log(k, 'depth', depth)
+      item.style.zIndex = itemOutput.zIndex;
+      item.style.transform = 'translate(' + itemOutput.x + 'px, ' + itemOutput.y + 'px)';
+  
+  
+    });
+}
+
+
 // De dang thay doi thong so va thiet ke
 var handleMouseMove = function (event) {
   mouse.x = event.pageX;
   mouse.y = event.pageY;
   updateInputs();
   updateOutputs();
-
-  //apply output to html
-  itemsArray.forEach(function (item, k) {
-    var depth = parseFloat(item.dataset.depth, 10);    //10 convert a number or a piece of string to something that count by 15s; 
-    var itemOutput = {
-      x: output.x.current - (output.x.current * depth),
-      y: output.y.current - (output.y.current * depth),
-      zIndex: output.zIndex.range - ( output.zIndex.range*depth)
-    };
-    console.log(k, 'depth', depth)
-    item.style.zIndex = itemOutput.zIndex;
-    item.style.transform = 'translate(' + itemOutput.x + 'px, ' + itemOutput.y + 'px)';
+  updateEachParallaxItem();
 
 
-  });
 }
 
 //console.log('output.x.current',output.x.current);

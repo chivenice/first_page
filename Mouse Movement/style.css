@@ -4,7 +4,8 @@ body {
 }
 
 .parallax-container {
-  min-height: 100vh;
+  min-height: 50vh;
+  position: relative;
 }
 .parallax-container.alt{
   background-color: rgb(57, 48, 75);

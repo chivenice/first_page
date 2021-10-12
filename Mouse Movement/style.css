@@ -3,6 +3,12 @@ body {
   margin:0;
 }
 
+.parallax-container {
+  min-height: 100vh;
+}
+.parallax-container.alt{
+  background-color: rgb(57, 48, 75);
+}
 
 .parallax-item {
   width:200px;

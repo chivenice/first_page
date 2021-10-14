@@ -71,14 +71,15 @@ var updateInputs = function () {
   // scroll y input
   input.scrollY.current = html.scrollTop;
   input.scrollY.fraction = (input.scrollY.current - input.scrollY.start) / input.scrollY.range;
+  console.log( 'scroll', input.scrollY.current)
 
 
 }
 
 var updateOutputs = function () {
   //output x and y
-/*   output.x.current = output.x.end - (input.mouseX.fraction * output.x.range);
-  output.y.current = output.y.end - (input.mouseY.fraction * output.y.range); */
+  /*   output.x.current = output.x.end - (input.mouseX.fraction * output.x.range);
+    output.y.current = output.y.end - (input.mouseY.fraction * output.y.range); */
   output.y.current = output.y.start + (input.scrollY.fraction * output.y.range);
 
 
@@ -88,18 +89,17 @@ var updateEachParallaxItem = function () {
   //apply output to html
   itemsArray.forEach(function (item, k) {
     var depth = parseFloat(item.dataset.depth, 10);    //10 convert a number or a piece of string to something that count by 15s; 
-    
+
     var itemInput = {
-      scrollY:{
-      start:450,
-      end:800,
+      scrollY: {
+        start: 450,
+        end: 800,
+      }
     }
-  }
-   itemInput.scrollY.range = itemInput.scrollY.end - itemInput.scrollY.start;
-   itemInput.scrollY.fraction = (itemInput.scrollY.current - itemInput.scrollY.start) / itemInput.scrollY.range;
+    itemInput.scrollY.range = itemInput.scrollY.end - itemInput.scrollY.start;
+    itemInput.scrollY.fraction = (itemInput.scrollY.current - itemInput.scrollY.start) / itemInput.scrollY.range;
 
-   var itemOutputYCurrent =  output.y.start + (itemInput.scrollY.fraction * output.y.range);
-
+    var itemOutputYCurrent = output.y.start + (itemInput.scrollY.fraction * output.y.range);
 
 
     var itemOutput = {
@@ -110,7 +110,7 @@ var updateEachParallaxItem = function () {
       scale: output.scale.start + (output.scale.range * depth),
       blur: (depth - output.blur.startingDepth) * output.blur.range
     };
-    console.log(k, 'depth', depth)
+    console.log(k, 'fraction', itemInput.scrollY.fraction)
     item.style.zIndex = itemOutput.zIndex;
     item.style.transform = 'scale(' + itemOutput.scale + ') translate(' + itemOutput.x + 'px, ' + itemOutput.y + 'px)';
     item.style.filter = 'blur(' + itemOutput.blur + 'px)';
@@ -149,11 +149,11 @@ var handleResize = function () {
 
 
 
-/* window.addEventListener('mousemove', handleMouseMove);
- */
+window.addEventListener('mousemove', handleMouseMove);
+
 document.addEventListener('scroll', handleScroll);
 window.addEventListener('resize', handleResize);
-/* 
+
 updateInputs();
 updateOutputs();
-updateEachParallaxItem(); */
+updateEachParallaxItem();

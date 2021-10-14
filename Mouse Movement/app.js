@@ -36,8 +36,8 @@ var output = {
     current: 0,
   },
   y: {
-    start: -150,
-    end: 150,
+    start: 0,
+    end: 500,
     current: 0,
   },
   zIndex: {
@@ -79,7 +79,7 @@ var updateOutputs = function () {
   //output x and y
 /*   output.x.current = output.x.end - (input.mouseX.fraction * output.x.range);
   output.y.current = output.y.end - (input.mouseY.fraction * output.y.range); */
-  output.y.current = output.y.end - (input.scrollY.fraction * output.y.range);
+  output.y.current = output.y.start + (input.scrollY.fraction * output.y.range);
 
 
 }
@@ -88,9 +88,24 @@ var updateEachParallaxItem = function () {
   //apply output to html
   itemsArray.forEach(function (item, k) {
     var depth = parseFloat(item.dataset.depth, 10);    //10 convert a number or a piece of string to something that count by 15s; 
+    
+    var itemInput = {
+      scrollY:{
+      start:450,
+      end:800,
+    }
+  }
+   itemInput.scrollY.range = itemInput.scrollY.end - itemInput.scrollY.start;
+   itemInput.scrollY.fraction = (itemInput.scrollY.current - itemInput.scrollY.start) / itemInput.scrollY.range;
+
+   var itemOutputYCurrent =  output.y.start + (itemInput.scrollY.fraction * output.y.range);
+
+
+
     var itemOutput = {
       x: output.x.current - (output.x.current * depth),
-      y: output.y.current - (output.y.current * depth),
+      //the deeper it is the quicker it going to move
+      y: itemOutputYCurrent * depth,
       zIndex: output.zIndex.range - (output.zIndex.range * depth),
       scale: output.scale.start + (output.scale.range * depth),
       blur: (depth - output.blur.startingDepth) * output.blur.range
@@ -136,9 +151,9 @@ var handleResize = function () {
 
 /* window.addEventListener('mousemove', handleMouseMove);
  */
-document.addEventListener('scroll', handleScroll)
+document.addEventListener('scroll', handleScroll);
 window.addEventListener('resize', handleResize);
-
+/* 
 updateInputs();
 updateOutputs();
-updateEachParallaxItem();
+updateEachParallaxItem(); */

@@ -37,7 +37,7 @@ var output = {
   },
   y: {
     start: 0,
-    end: 500,
+    end: 300,
     current: 0,
   },
   zIndex: {
@@ -97,7 +97,8 @@ var updateEachParallaxItem = function () {
       }
     }
     itemInput.scrollY.range = itemInput.scrollY.end - itemInput.scrollY.start;
-    itemInput.scrollY.fraction = (itemInput.scrollY.current - itemInput.scrollY.start) / itemInput.scrollY.range;
+    //IMPORTANT! base it off the global input.scrollY.current which is based on the page scroll
+    itemInput.scrollY.fraction = (input.scrollY.current - itemInput.scrollY.start) / itemInput.scrollY.range;
 
     var itemOutputYCurrent = output.y.start + (itemInput.scrollY.fraction * output.y.range);
 

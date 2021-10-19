@@ -37,7 +37,7 @@ var output = {
   },
   y: {
     start: 0,
-    end: 300,
+    end: 500,
     current: 0,
   },
   zIndex: {
@@ -92,8 +92,8 @@ var updateEachParallaxItem = function () {
 
     var itemInput = {
       scrollY: {
-        start: 450,
-        end: 800,
+        start: item.offsetParent.offsetTop,//start when its visible and end when its not visible
+        end: item.offsetParent.offsetTop + window.innerHeight,
       }
     }
     itemInput.scrollY.range = itemInput.scrollY.end - itemInput.scrollY.start;

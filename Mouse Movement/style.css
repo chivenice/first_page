@@ -5,7 +5,7 @@ body {
 
 .parallax-container {
   min-height: 80vh;
-  position: relative;
+  position: relative; /* offsetParent */
 }
 .parallax-container.alt{
   background-color: rgb(108, 102, 165);

@@ -48,3 +48,18 @@ button:focus {outline:0;}
   color: grey;
   border: none;
 }
+button:nth-child(5){
+    background-color: seagreen;
+}
+button:nth-child(9){
+    background-color: orange;
+}
+button:nth-child(13){
+    background-color: cornflowerblue;
+}
+button:nth-child(17){
+    background-color: rosybrown;
+}
+button:nth-child(18){
+    background-color: plum;
+}

@@ -24,7 +24,7 @@ body {
 .planet {
   width: 50%;
   height: 50%;
-  background: url(/Users/chivenice/Desktop/Personal/dumb-art/planet1.png)
-    no-repeat center center;
+  /* background: url(/Users/chivenice/Desktop/Personal/dumb-art/planet1.png)
+    no-repeat center center; */
   background-size: contain;
 }

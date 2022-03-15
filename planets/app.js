@@ -47,7 +47,7 @@ output.y.range = output.y.end - output.y.start;
 var parallaxContainer = document.getElementById("parallaxContainer");
 var itemsArray = Array.from(parallaxContainer);
 
-for (var i = 2; i < 10; i++) {
+for (var i = 1; i < 10; i++) {
   //create a new element with parallax-container className
   var item = document.createElement("div");
   item.className = "parallax-item";
@@ -71,7 +71,7 @@ for (var i = 2; i < 10; i++) {
   item.style.width = 500 * randomNum + 50;
   item.style.height = 500 * randomNum + 50;
   item.dataset.depth = randomNum;
-  planet.style.transform = "rotate(" + 360 * randomNum + "deg)";
+  planet.style.transform = "rotate(" + rotateNum + "deg)";
   planet.style.backgroundImage =
     "url(/Users/chivenice/Desktop/Personal/dumb-art/planet" +
     bgImgNum +
